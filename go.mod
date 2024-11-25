@@ -1,3 +1,3 @@
-module github.com/Pineapple217/woord
+module github.com/Pineapple217/tienerwoord
 
 go 1.23.1
