@@ -4,7 +4,7 @@ FROM --platform=$BUILDPLATFORM golang:${GO_VERSION} AS build
 WORKDIR /src
 
 RUN --mount=type=cache,target=/go/pkg/mod/ \
-    # --mount=type=bind,source=go.sum,target=go.sum \
+    --mount=type=bind,source=go.sum,target=go.sum \
     --mount=type=bind,source=go.mod,target=go.mod \
     go mod download -x
 

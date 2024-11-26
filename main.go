@@ -12,6 +12,8 @@ import (
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/brianvoe/gofakeit"
 )
 
 const (
@@ -55,6 +57,11 @@ func main() {
 						continue
 					}
 					req.Header.Set("Content-Type", contentType)
+					req.Header.Set("User-Agent", gofakeit.UserAgent())
+					req.Header.Set("Accept-Encoding", "gzip")
+					req.Header.Set("Cache-Control", "no-cache")
+					req.Header.Set("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
+
 					resp, err := client.Do(req)
 					if err != nil {
 						atomic.AddInt64(&errors, 1)
